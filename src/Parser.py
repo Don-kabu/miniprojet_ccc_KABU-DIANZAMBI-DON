@@ -155,10 +155,10 @@ def makedata(rawdata):
         data[test_name] = {}
         data[test_name]["metadata"] = extract_metadata(block)
         data[test_name]["parameters"] = extract_test_parameters_block(block)
-        a+=len(data[test_name]["parameters"])
-    print(a)
+        data[test_name]["measurements"] = extract_measurement_tables(block)
 
-    data["measurements"] = extract_measurement_tables(rawdata)
+
+    # data["measurements"] = extract_measurement_tables(rawdata)
 
     data = normalize_data(fix_encoding(data))
     with open("out/output.json","w",encoding="utf-8") as file:
@@ -167,3 +167,4 @@ def makedata(rawdata):
 
 # makedata(text)
 data = json_to_flat_csv(makedata(text))
+print(data)

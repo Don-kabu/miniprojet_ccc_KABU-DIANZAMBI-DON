@@ -49,7 +49,133 @@
                 "sweep_time": 1000,
                 "maxhold": 5
             }
-        ]
+        ],
+        "measurements": {
+            "CISPR.AVG/Lim.Avg (2)": {
+                "headers": [
+                    "Frequency (MHz)",
+                    "SR",
+                    "CISPR.AVG (dBµV/m)",
+                    "Lim.Avg (dBµV/m)",
+                    "CISPR.AVG-Lim.Avg (dB)",
+                    "Polarization",
+                    "Correction (dB)"
+                ],
+                "rows": [
+                    {
+                        "Frequency (MHz)": 1.25425,
+                        "SR": 1,
+                        "CISPR.AVG (dBµV/m)": 18.35,
+                        "Lim.Avg (dBµV/m)": 44,
+                        "CISPR.AVG-Lim.Avg (dB)": -25.65,
+                        "Polarization": "Vertical",
+                        "Correction (dB)": 9.92
+                    },
+                    {
+                        "Frequency (MHz)": 27.25975,
+                        "SR": 2,
+                        "CISPR.AVG (dBµV/m)": 4.57,
+                        "Lim.Avg (dBµV/m)": 28,
+                        "CISPR.AVG-Lim.Avg (dB)": -23.43,
+                        "Polarization": "Vertical",
+                        "Correction (dB)": 10.29
+                    }
+                ]
+            },
+            "Peak/Lim.Q-Peak (2)": {
+                "headers": [
+                    "Frequency (MHz)",
+                    "SR",
+                    "Peak (dBµV/m)",
+                    "Lim.Q-Peak (dBµV/m)",
+                    "Peak-Lim.Q-Peak (dB)",
+                    "Polarization",
+                    "Correction (dB)"
+                ],
+                "rows": [
+                    {
+                        "Frequency (MHz)": 1.25875,
+                        "SR": 1,
+                        "Peak (dBµV/m)": 33.25,
+                        "Lim.Q-Peak (dBµV/m)": 51,
+                        "Peak-Lim.Q-Peak (dB)": -17.75,
+                        "Polarization": "Vertical",
+                        "Correction (dB)": 9.92
+                    },
+                    {
+                        "Frequency (MHz)": 27.26875,
+                        "SR": 2,
+                        "Peak (dBµV/m)": 22.15,
+                        "Lim.Q-Peak (dBµV/m)": 45,
+                        "Peak-Lim.Q-Peak (dB)": -22.85,
+                        "Polarization": "Vertical",
+                        "Correction (dB)": 10.29
+                    }
+                ]
+            },
+            "Q-Peak/Lim.Q-Peak (2)": {
+                "headers": [
+                    "Frequency (MHz)",
+                    "SR",
+                    "Q-Peak (dBµV/m)",
+                    "Lim.Q-Peak (dBµV/m)",
+                    "Q-Peak-Lim.Q-Peak (dB)",
+                    "Polarization",
+                    "Correction (dB)"
+                ],
+                "rows": [
+                    {
+                        "Frequency (MHz)": 1.2565,
+                        "SR": 1,
+                        "Q-Peak (dBµV/m)": 31.39,
+                        "Lim.Q-Peak (dBµV/m)": 51,
+                        "Q-Peak-Lim.Q-Peak (dB)": -19.61,
+                        "Polarization": "Vertical",
+                        "Correction (dB)": 9.92
+                    },
+                    {
+                        "Frequency (MHz)": 27.25975,
+                        "SR": 2,
+                        "Q-Peak (dBµV/m)": 16.05,
+                        "Lim.Q-Peak (dBµV/m)": 45,
+                        "Q-Peak-Lim.Q-Peak (dB)": -28.95,
+                        "Polarization": "Vertical",
+                        "Correction (dB)": 10.29
+                    }
+                ]
+            },
+            "Peak/Lim.Peak (2)": {
+                "headers": [
+                    "Frequency (MHz)",
+                    "SR",
+                    "Peak (dBµV/m)",
+                    "Lim.Peak (dBµV/m)",
+                    "Peak-Lim.Peak (dB)",
+                    "Polarization",
+                    "Correction (dB)"
+                ],
+                "rows": [
+                    {
+                        "Frequency (MHz)": 1.25875,
+                        "SR": 1,
+                        "Peak (dBµV/m)": 33.25,
+                        "Lim.Peak (dBµV/m)": 64,
+                        "Peak-Lim.Peak (dB)": -30.75,
+                        "Polarization": "Vertical",
+                        "Correction (dB)": 9.92
+                    },
+                    {
+                        "Frequency (MHz)": 27.26875,
+                        "SR": 2,
+                        "Peak (dBµV/m)": 22.15,
+                        "Lim.Peak (dBµV/m)": 58,
+                        "Peak-Lim.Peak (dB)": -35.85,
+                        "Polarization": "Vertical",
+                        "Correction (dB)": 10.29
+                    }
+                ]
+            }
+        }
     },
     "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz_GNSS": {
         "metadata": {
@@ -101,7 +227,8 @@
                 "sweep_time": 1000,
                 "maxhold": 5
             }
-        ]
+        ],
+        "measurements": {}
     },
     "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS": {
         "metadata": {
@@ -153,7 +280,8 @@
                 "sweep_time": 1000,
                 "maxhold": 5
             }
-        ]
+        ],
+        "measurements": {}
     },
     "CRE2-2025-TP002-02_ER_In front of harness RBW 120kHz With PA": {
         "metadata": {
@@ -269,7 +397,8 @@
                 "sweep_time": 1000,
                 "maxhold": 5
             }
-        ]
+        ],
+        "measurements": {}
     },
     "CRE2-2025-TP002-02_ER_In front of harness RBW 1MHz With PA": {
         "metadata": {
@@ -353,7 +482,8 @@
                 "sweep_time": 1000,
                 "maxhold": 5
             }
-        ]
+        ],
+        "measurements": {}
     },
     "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA": {
         "metadata": {
@@ -469,7 +599,8 @@
                 "sweep_time": 1000,
                 "maxhold": 5
             }
-        ]
+        ],
+        "measurements": {}
     },
     "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA": {
         "metadata": {
@@ -585,7 +716,8 @@
                 "sweep_time": 1000,
                 "maxhold": 5
             }
-        ]
+        ],
+        "measurements": {}
     },
     "Invest CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS": {
         "metadata": {
@@ -637,132 +769,7 @@
                 "sweep_time": 1000,
                 "maxhold": 5
             }
-        ]
-    },
-    "measurements": {
-        "CISPR.AVG/Lim.Avg (2)": {
-            "headers": [
-                "Frequency (MHz)",
-                "SR",
-                "CISPR.AVG (dBµV/m)",
-                "Lim.Avg (dBµV/m)",
-                "CISPR.AVG-Lim.Avg (dB)",
-                "Polarization",
-                "Correction (dB)"
-            ],
-            "rows": [
-                {
-                    "Frequency (MHz)": 1.25425,
-                    "SR": 1,
-                    "CISPR.AVG (dBµV/m)": 18.35,
-                    "Lim.Avg (dBµV/m)": 44,
-                    "CISPR.AVG-Lim.Avg (dB)": -25.65,
-                    "Polarization": "Vertical",
-                    "Correction (dB)": 9.92
-                },
-                {
-                    "Frequency (MHz)": 27.25975,
-                    "SR": 2,
-                    "CISPR.AVG (dBµV/m)": 4.57,
-                    "Lim.Avg (dBµV/m)": 28,
-                    "CISPR.AVG-Lim.Avg (dB)": -23.43,
-                    "Polarization": "Vertical",
-                    "Correction (dB)": 10.29
-                }
-            ]
-        },
-        "Peak/Lim.Q-Peak (2)": {
-            "headers": [
-                "Frequency (MHz)",
-                "SR",
-                "Peak (dBµV/m)",
-                "Lim.Q-Peak (dBµV/m)",
-                "Peak-Lim.Q-Peak (dB)",
-                "Polarization",
-                "Correction (dB)"
-            ],
-            "rows": [
-                {
-                    "Frequency (MHz)": 1.25875,
-                    "SR": 1,
-                    "Peak (dBµV/m)": 33.25,
-                    "Lim.Q-Peak (dBµV/m)": 51,
-                    "Peak-Lim.Q-Peak (dB)": -17.75,
-                    "Polarization": "Vertical",
-                    "Correction (dB)": 9.92
-                },
-                {
-                    "Frequency (MHz)": 27.26875,
-                    "SR": 2,
-                    "Peak (dBµV/m)": 22.15,
-                    "Lim.Q-Peak (dBµV/m)": 45,
-                    "Peak-Lim.Q-Peak (dB)": -22.85,
-                    "Polarization": "Vertical",
-                    "Correction (dB)": 10.29
-                }
-            ]
-        },
-        "Q-Peak/Lim.Q-Peak (2)": {
-            "headers": [
-                "Frequency (MHz)",
-                "SR",
-                "Q-Peak (dBµV/m)",
-                "Lim.Q-Peak (dBµV/m)",
-                "Q-Peak-Lim.Q-Peak (dB)",
-                "Polarization",
-                "Correction (dB)"
-            ],
-            "rows": [
-                {
-                    "Frequency (MHz)": 1.2565,
-                    "SR": 1,
-                    "Q-Peak (dBµV/m)": 31.39,
-                    "Lim.Q-Peak (dBµV/m)": 51,
-                    "Q-Peak-Lim.Q-Peak (dB)": -19.61,
-                    "Polarization": "Vertical",
-                    "Correction (dB)": 9.92
-                },
-                {
-                    "Frequency (MHz)": 27.25975,
-                    "SR": 2,
-                    "Q-Peak (dBµV/m)": 16.05,
-                    "Lim.Q-Peak (dBµV/m)": 45,
-                    "Q-Peak-Lim.Q-Peak (dB)": -28.95,
-                    "Polarization": "Vertical",
-                    "Correction (dB)": 10.29
-                }
-            ]
-        },
-        "Peak/Lim.Peak (2)": {
-            "headers": [
-                "Frequency (MHz)",
-                "SR",
-                "Peak (dBµV/m)",
-                "Lim.Peak (dBµV/m)",
-                "Peak-Lim.Peak (dB)",
-                "Polarization",
-                "Correction (dB)"
-            ],
-            "rows": [
-                {
-                    "Frequency (MHz)": 1.25875,
-                    "SR": 1,
-                    "Peak (dBµV/m)": 33.25,
-                    "Lim.Peak (dBµV/m)": 64,
-                    "Peak-Lim.Peak (dB)": -30.75,
-                    "Polarization": "Vertical",
-                    "Correction (dB)": 9.92
-                },
-                {
-                    "Frequency (MHz)": 27.26875,
-                    "SR": 2,
-                    "Peak (dBµV/m)": 22.15,
-                    "Lim.Peak (dBµV/m)": 58,
-                    "Peak-Lim.Peak (dB)": -35.85,
-                    "Polarization": "Vertical",
-                    "Correction (dB)": 10.29
-                }
-            ]
-        }
+        ],
+        "measurements": {}
     }
 }
