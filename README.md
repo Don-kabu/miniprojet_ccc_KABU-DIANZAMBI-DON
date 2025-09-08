@@ -85,7 +85,7 @@ INPUTFILE = "input/RAW DATA 01.doc"
 ```
 
 # Vérifier les résultats dans /out
-
+```bash
 Résultats générés
 Tous les fichiers de sortie se trouvent dans le dossier out/ :
 
@@ -96,3 +96,4 @@ Tous les fichiers de sortie se trouvent dans le dossier out/ :
 . out/(nomfichier)_FULL.json → Résultats complets en JSON
 
 . out/Processed_(nomfichier).docx → Rapport final Word formaté
+```
