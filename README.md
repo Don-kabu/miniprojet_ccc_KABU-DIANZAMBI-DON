@@ -54,6 +54,7 @@ out/(nomfichier)_FULL.json → Résultats complets en JSON
 out/Processed_(nomfichier).docx → Rapport final Word formaté
 
 # Structure du projet
+```bash
 MINIPROJET_CCC_KABU-DIANZAMBI-DON/
 ├─ input/                  # Fichiers RAW en entrée
 ├─ out/                    # Résultats générés
@@ -71,11 +72,13 @@ MINIPROJET_CCC_KABU-DIANZAMBI-DON/
 ├─ tests/                  # Tests unitaires
 ├─ requirements.txt        # Dépendances Python
 └─ README.md               # Documentation
+```
 
 ## Exemple rapide
 # Modifier src/config.py
+```bash
 INPUTFILE = "input/RAW DATA 01.doc"
-
+```
 # Lancer le script
 ```bash
     python src/main.py
@@ -83,3 +86,13 @@ INPUTFILE = "input/RAW DATA 01.doc"
 
 # Vérifier les résultats dans /out
 
+Résultats générés
+Tous les fichiers de sortie se trouvent dans le dossier out/ :
+
+. out/out_(nomfichier).csv → Résultats tabulés au format CSV
+
+. out/(nomfichier)_IMPORTANT.json → Résumé des informations essentielles
+
+. out/(nomfichier)_FULL.json → Résultats complets en JSON
+
+. out/Processed_(nomfichier).docx → Rapport final Word formaté
