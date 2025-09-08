@@ -1,96 +1,131 @@
-import json
-import csv
+import pandas as pd
 
-def json_to_flat_csv(data):
-    """
-    Transforme un fichier JSON de tests en un CSV plat avec metadata, test_config,
-    parameters et measurements.
-    """
 
-    # Colonnes de base
-    base_cols = [
-        "Test name", "Sample", "Project", "Operator",
-        "Antenna position", "DUT Orientation", 
-        "Housing connected to the ground plane", 
-        "Configuration of the power return line LV",
-        "Operating Mode", "Conclusion"
-    ]
 
-    # Colonnes parameters
-    param_cols = [
-        "Parameter name", "Step", "Preamp", "Setup", 
-        "RBW", "Dynamic", "Span", "Ref_level", 
-        "VBW", "RF Att", "Sweep time", "Maxhold"
-    ]
 
-    # Colonnes measurements
-    measure_cols = set()
-    for test in data.values():
-        measurements = test.get("measurements", {})
-        for measure_data in measurements.values():
-            measure_cols.update(measure_data.get("headers", []))
-    measure_cols = list(measure_cols)
 
-    # Toutes les colonnes
-    all_cols = base_cols + param_cols + measure_cols
 
-    with open("out/output.csv", "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=all_cols)
-        writer.writeheader()
 
-        for test_name, test_data in data.items():
-            metadata = test_data.get("metadata", {})
-            test_config = metadata.get("test_config", {})
-            operating_mode = metadata.get("operating_mode", {})
-            parameters = test_data.get("parameters", [])
-            measurements = test_data.get("measurements", {})
 
-            if not parameters:
-                parameters = [{}]
-
-            for param in parameters:
-                row = {
-                    "Test name": test_name,
-                    "Sample": metadata.get("sample", ""),
-                    "Project": metadata.get("project", ""),
-                    "Operator": metadata.get("operator", ""),
-                    "Antenna position": test_config.get("Antenna position", ""),
-                    "DUT Orientation": test_config.get("DUT Orientation", ""),
-                    "Housing connected to the ground plane": test_config.get("Housing connected to the ground plane", ""),
-                    "Configuration of the power return line LV": test_config.get("Configuration of the power return line LV", ""),
-                    "Operating Mode": operating_mode.get("Mode", ""),
-                    "Conclusion": operating_mode.get("Conclusion", ""),
-                    "Parameter name": param.get("name", ""),
-                    "Step": param.get("step", ""),
-                    "Preamp": param.get("preamp", ""),
-                    "Setup": param.get("setup", ""),
-                    "RBW": param.get("rbw", ""),
-                    "Dynamic": param.get("dynamic", ""),
-                    "Span": param.get("span", ""),
-                    "Ref_level": param.get("ref_level", ""),
-                    "VBW": param.get("vbw", ""),
-                    "RF Att": param.get("rf_att", ""),
-                    "Sweep time": param.get("sweep_time", ""),
-                    "Maxhold": param.get("maxhold", "")
+def extract_important_data(data):
+    structured_result = {}
+    
+    for test_name, test_data in data.items():
+        metadata = test_data.get('metadata', {})
+        test_config = metadata.get('test_config', {})
+        operating_mode = test_data.get('metadata', {}).get('operating_mode', {})
+        
+        sample_id = metadata.get('sample', '')
+        antenna_position = test_config.get('Antenna position', '')
+        dut_orientation = test_config.get('DUT Orientation', '')
+        mode = operating_mode.get("Mode")
+        
+        # Extraire les paramètres uniques (sans name)
+        parameters_list = test_data.get('parameters', [])
+        parameters_list[0].pop("name")
+        parameters_list[0].pop("filename")
+        unique_params = parameters_list[0]
+        measurements_data = []
+        measurements = test_data.get('measurements', {})
+        
+        for measurement_type, measurement_info in measurements.items():
+            headers = measurement_info.get('headers', [])
+            rows = measurement_info.get('rows', [])
+            measurement_used = measurement_type.split('/')[0]
+            
+            for row in rows:
+                # Créer une entrée standardisée
+                measurement_entry = {
+                    'measurement_type': measurement_used,
+                    'frequency_mhz': row.get('Frequency (MHz)', ''),
+                    'sr': row.get('SR', ''),
+                    'Measure': '',
+                    'Limit': '',
+                    'Margin': '',
+                    'polarization': row.get('Polarization', ''),
+                    'correction_db': row.get('Correction (dB)', ''),
+                    'veridict' : ''
                 }
+                
+                # Remplir les valeurs selon le type de mesure
+                if measurement_used == 'CISPR.AVG':
+                    measurement_entry['Measured'] = row.get('CISPR.AVG (dBµV/m)', '')
+                    measurement_entry['Limit'] = row.get('Lim.Avg (dBµV/m)', '')
+                    measurement_entry['Margin'] = row.get('CISPR.AVG-Lim.Avg (dB)', '')
+                elif measurement_used == 'Peak':
+                    measurement_entry['Measured'] = row.get('Peak (dBµV/m)', '')
+                    measurement_entry['Limit'] = row.get('Lim.Q-Peak (dBµV/m)', '') or row.get('Lim.Peak (dBµV/m)', '')
+                    measurement_entry['Margin'] = row.get('Peak-Lim.Q-Peak (dB)', '') or row.get('Peak-Lim.Peak (dB)', '')
+                elif measurement_used == 'Q-Peak':
+                    measurement_entry['Measure'] = row.get('Q-Peak (dBµV/m)', '')
+                    measurement_entry['Limit'] = row.get('Lim.Q-Peak (dBµV/m)', '')
+                    measurement_entry['Margin'] = row.get('Q-Peak-Lim.Q-Peak (dB)', '')
+                
+                measurement_entry['veridict']  =  "PASS" if measurement_entry['Margin']>= 0 else "FAIL"
+                    
+                measurements_data.append(measurement_entry)
+        
+        # Structurer le résultat final
+        structured_result[test_name] = {
+            'sample_id': sample_id,
+            'antenna_position': antenna_position,
+            'mode' : mode,
+            'dut_orientation': dut_orientation,
+            'parameters': unique_params,
+            'measurements': measurements_data,
+            'has_measurements': bool(measurements)
 
-                # Ajouter les mesures
-                if measurements:
-                    for measure_name, measure_data in measurements.items():
-                        rows = measure_data.get("rows", [])
-                        if rows:
-                            for measure_row in rows:
-                                row_copy = row.copy()
-                                for col in measure_cols:
-                                    row_copy[col] = measure_row.get(col, "")
-                                writer.writerow(row_copy)
-                        else:
-                            for col in measure_cols:
-                                row[col] = ""
-                            writer.writerow(row)
-                else:
-                    for col in measure_cols:
-                        row[col] = ""
-                    writer.writerow(row)
+        }
+    
+    return structured_result
 
-# Exemple d'utilisation
+
+
+
+
+
+def get_filename_from_path(path):
+    return path.split("/")[-1].split(".")[0]
+
+
+
+
+
+
+
+def export_to_csv(data,filename):
+    measurements_list = []
+
+    for test_name, test_data in data.items():
+        if test_data['has_measurements'] and test_data['measurements']:
+            for measurement in test_data['measurements']:
+                measurement_row = {
+                    'test_name': test_name,
+                    'sample_id': test_data['sample_id'],
+                    'antenna_position': test_data['antenna_position'],
+                    'dut_orientation': test_data['dut_orientation'],
+                    'measurement_type': measurement['measurement_type'],
+                    'frequency_mhz': measurement['frequency_mhz'],
+                    'sr': measurement['sr'],
+                    'Measure': measurement.get('Measure', ''),
+                    'Limit': measurement['Limit'],
+                    'Margin': measurement['Margin'],
+                    'polarization': measurement['polarization'],
+                    'correction_db': measurement['correction_db'],
+                    'veridict': measurement['veridict'],
+                    'Measured': measurement.get('Measured', '')
+                }
+                measurements_list.append(measurement_row)
+
+    # Créer le DataFrame et exporter en CSV
+    if measurements_list:
+        df = pd.DataFrame(measurements_list)
+        df.to_csv(f'out/out_{filename}.csv', index=False, encoding='utf-8')
+        return True
+    else:
+        return False
+
+
+
+
+

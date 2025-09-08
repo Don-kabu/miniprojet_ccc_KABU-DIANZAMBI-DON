@@ -106,3 +106,4 @@ def normalize_data(data):
         return normalize_value("", data)
     else:
         return data
+    

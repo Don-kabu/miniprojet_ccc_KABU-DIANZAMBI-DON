@@ -4,9 +4,7 @@ import re
 import docx2txt
 from typing import List, Dict, Any
 from config import MESURE_DATA_PATTERN,TEST_PARAMETERS_BLOCK_PATTERN,BLOCK_PATTERN,META_DATA_PATTERN
-import json
 from rules import fix_encoding,normalize_data
-from utils import json_to_flat_csv
 
 text = docx2txt.process("input/RAW DATA 02.doc")
 
@@ -158,13 +156,7 @@ def makedata(rawdata):
         data[test_name]["measurements"] = extract_measurement_tables(block)
 
 
-    # data["measurements"] = extract_measurement_tables(rawdata)
 
     data = normalize_data(fix_encoding(data))
-    with open("out/output.json","w",encoding="utf-8") as file:
-        json.dump(data,file,indent=4,ensure_ascii=False)
-    return data
 
-# makedata(text)
-data = json_to_flat_csv(makedata(text))
-print(data)
+    return data

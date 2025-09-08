@@ -18,8 +18,6 @@
         },
         "parameters": [
             {
-                "name": "100kHz-10MHz",
-                "filename": "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz",
                 "step": 2.25,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 9kHz-30MHz_rod",
@@ -196,8 +194,6 @@
         },
         "parameters": [
             {
-                "name": "1.156GHz-1.617GHz",
-                "filename": "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz_GNSS",
                 "step": 2.25,
                 "preamp": "ON",
                 "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
@@ -249,8 +245,6 @@
         },
         "parameters": [
             {
-                "name": "1.156GHz-1.617GHz",
-                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
                 "step": 2.25,
                 "preamp": "ON",
                 "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
@@ -302,8 +296,6 @@
         },
         "parameters": [
             {
-                "name": "30MHz-200MHz",
-                "filename": "CRE2-2025-TP002-02_ER_In front of harness RBW 120kHz With PA",
                 "step": 30,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
@@ -419,8 +411,6 @@
         },
         "parameters": [
             {
-                "name": "171MHz-200MHz",
-                "filename": "CRE2-2025-TP002-02_ER_In front of harness RBW 1MHz With PA",
                 "step": 250,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
@@ -504,8 +494,6 @@
         },
         "parameters": [
             {
-                "name": "30MHz-200MHz",
-                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
                 "step": 30,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
@@ -621,8 +609,6 @@
         },
         "parameters": [
             {
-                "name": "171MHz-200MHz",
-                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
                 "step": 250,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
@@ -738,8 +724,6 @@
         },
         "parameters": [
             {
-                "name": "1.156GHz-1.617GHz",
-                "filename": "Invest CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
                 "step": 2.25,
                 "preamp": "ON",
                 "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",

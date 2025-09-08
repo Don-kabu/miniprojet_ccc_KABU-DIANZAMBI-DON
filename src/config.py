@@ -13,6 +13,12 @@ import os
 import re
 
 
+
+
+
+INPUTFILE = "input/RAW DATA 02.doc"
+
+
 ROOT = os.getcwd()
 DATA_DIR = os.path.join(ROOT, 'data')
 INPUT_DIR = os.path.join(DATA_DIR, 'input')
@@ -82,3 +88,6 @@ META_DATA_PATTERN = re.compile(
         r"Operating mode:\s*(?P<operating_mode>.*?)(?=\n\n|\Z)",
         re.DOTALL
     )
+
+
+candidate = "KABU DIANZAMBI DON"
