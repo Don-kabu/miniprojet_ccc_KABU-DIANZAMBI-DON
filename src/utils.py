@@ -5,8 +5,6 @@ import pandas as pd
 
 
 
-
-
 def extract_important_data(data):
     structured_result = {}
     

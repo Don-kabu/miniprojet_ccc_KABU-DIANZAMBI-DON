@@ -1,10 +1,8 @@
-from importlib import metadata
 from docx import Document
 from docx.shared import Pt, Inches,RGBColor
 from datetime import datetime
 import pandas as pd 
 from config import candidate
-import json
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 

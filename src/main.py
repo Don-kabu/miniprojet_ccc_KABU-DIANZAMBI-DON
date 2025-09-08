@@ -36,5 +36,7 @@ try:
         """)
 
 except :
-    print("cannot open the file")
+    print("""
+    SOME THING WENT WRONG  CHECK YOUR FILE PATH 
+""")
     data = None
