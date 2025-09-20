@@ -1,0 +1,148 @@
+[
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz-axis X-Mode3-comply \n tests :100kHz-10MHz10MHz-30MHz",
+        "table": [
+            [
+                1.25425,
+                1,
+                18.35,
+                44,
+                -25.65,
+                "Vertical",
+                9.92,
+                "CISPR.AVG",
+                "PASS"
+            ],
+            [
+                27.25975,
+                2,
+                4.57,
+                28,
+                -23.43,
+                "Vertical",
+                10.29,
+                "CISPR.AVG",
+                "PASS"
+            ],
+            [
+                1.25875,
+                1,
+                33.25,
+                51,
+                -17.75,
+                "Vertical",
+                9.92,
+                "Peak",
+                "PASS"
+            ],
+            [
+                27.26875,
+                2,
+                22.15,
+                45,
+                -22.85,
+                "Vertical",
+                10.29,
+                "Peak",
+                "PASS"
+            ],
+            [
+                1.2565,
+                1,
+                31.39,
+                51,
+                -19.61,
+                "Vertical",
+                9.92,
+                "Q-Peak",
+                "PASS"
+            ],
+            [
+                27.25975,
+                2,
+                16.05,
+                45,
+                -28.95,
+                "Vertical",
+                10.29,
+                "Q-Peak",
+                "PASS"
+            ],
+            [
+                1.25875,
+                1,
+                33.25,
+                64,
+                -30.75,
+                "Vertical",
+                9.92,
+                "Peak",
+                "PASS"
+            ],
+            [
+                27.26875,
+                2,
+                22.15,
+                58,
+                -35.85,
+                "Vertical",
+                10.29,
+                "Peak",
+                "PASS"
+            ]
+        ],
+        "verdict": "PASS"
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of harness RBW 120kHz With PA-axis X-Mode3-comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of harness RBW 1MHz With PA-axis X-Mode3-not comply \n tests :171MHz-200MHz171MHz-200MHz200MHz-2GHz200MHz-2GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA-axis X-Mode3-not comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA-axis X-Mode3-not comply \n tests :171MHz-200MHz171MHz-200MHz200MHz-2GHz200MHz-2GHz2GHz-6GHz2GHz-6GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA-axis Y-Mode3-not comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA-axis Y-Mode3-not comply \n tests :171MHz-200MHz171MHz-200MHz200MHz-2GHz200MHz-2GHz2GHz-6GHz2GHz-6GHz",
+        "table": []
+    },
+    {
+        "header": "Invest CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS-axis X-Mode3-not comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA-axis Z-Mode3-not comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA-axis Z-Mode3-not comply \n tests :171MHz-200MHz171MHz-200MHz200MHz-2GHz200MHz-2GHz2GHz-6GHz2GHz-6GHz",
+        "table": []
+    }
+]

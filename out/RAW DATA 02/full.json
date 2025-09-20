@@ -1,5 +1,6 @@
-{
-    "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz": {
+[
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz",
         "metadata": {
             "sample": "CRE2-2025-TP002-02",
             "project": "CRE2-2025-TP002 RESAC",
@@ -18,6 +19,8 @@
         },
         "parameters": [
             {
+                "name": "100kHz-10MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz",
                 "step": 2.25,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 9kHz-30MHz_rod",
@@ -175,7 +178,8 @@
             }
         }
     },
-    "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz_GNSS": {
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz_GNSS",
         "metadata": {
             "sample": "CRE2-2025-TP002-02",
             "project": "CRE2-2025-TP002 RESAC",
@@ -194,6 +198,8 @@
         },
         "parameters": [
             {
+                "name": "1.156GHz-1.617GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of harness RBW 9kHz_GNSS",
                 "step": 2.25,
                 "preamp": "ON",
                 "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
@@ -226,11 +232,12 @@
         ],
         "measurements": {}
     },
-    "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS": {
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
         "metadata": {
             "sample": "CRE2-2025-TP002-02",
             "project": "CRE2-2025-TP002 RESAC",
-            "operator": "NDN/WD, 18/02/2025 07:54:39",
+            "operator": "NDN/WD, 17/02/2025 19:42:32",
             "test_config": {
                 "Antenna position": "in front of harness",
                 "DUT Orientation": "axis X",
@@ -240,11 +247,13 @@
             },
             "operating_mode": {
                 "Mode": 3,
-                "Conclusion": "not comply"
+                "Conclusion": "comply"
             }
         },
         "parameters": [
             {
+                "name": "1.156GHz-1.617GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
                 "step": 2.25,
                 "preamp": "ON",
                 "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
@@ -277,7 +286,8 @@
         ],
         "measurements": {}
     },
-    "CRE2-2025-TP002-02_ER_In front of harness RBW 120kHz With PA": {
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of harness RBW 120kHz With PA",
         "metadata": {
             "sample": "CRE2-2025-TP002-02",
             "project": "CRE2-2025-TP002 RESAC",
@@ -296,6 +306,8 @@
         },
         "parameters": [
             {
+                "name": "30MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of harness RBW 120kHz With PA",
                 "step": 30,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
@@ -392,7 +404,8 @@
         ],
         "measurements": {}
     },
-    "CRE2-2025-TP002-02_ER_In front of harness RBW 1MHz With PA": {
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of harness RBW 1MHz With PA",
         "metadata": {
             "sample": "CRE2-2025-TP002-02",
             "project": "CRE2-2025-TP002 RESAC",
@@ -411,6 +424,8 @@
         },
         "parameters": [
             {
+                "name": "171MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of harness RBW 1MHz With PA",
                 "step": 250,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
@@ -475,14 +490,15 @@
         ],
         "measurements": {}
     },
-    "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA": {
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
         "metadata": {
             "sample": "CRE2-2025-TP002-02",
             "project": "CRE2-2025-TP002 RESAC",
-            "operator": "NDN/WD, 20/02/2025 11:12:24",
+            "operator": "VA/FK, 18/02/2025 16:13:21",
             "test_config": {
                 "Antenna position": "in front of DUT",
-                "DUT Orientation": "axis Z",
+                "DUT Orientation": "axis X",
                 "Housing connected to the ground plane": "no",
                 "Configuration of the power return line LV": "remotely grounded",
                 "-": ""
@@ -494,6 +510,8 @@
         },
         "parameters": [
             {
+                "name": "30MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
                 "step": 30,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
@@ -590,14 +608,15 @@
         ],
         "measurements": {}
     },
-    "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA": {
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
         "metadata": {
             "sample": "CRE2-2025-TP002-02",
             "project": "CRE2-2025-TP002 RESAC",
-            "operator": "NDN/WD, 20/02/2025 09:26:46",
+            "operator": "NDN/WD, 18/02/2025 16:30:13",
             "test_config": {
                 "Antenna position": "in front of DUT",
-                "DUT Orientation": "axis Z",
+                "DUT Orientation": "axis X",
                 "Housing connected to the ground plane": "no",
                 "Configuration of the power return line LV": "remotely grounded",
                 "-": ""
@@ -609,6 +628,8 @@
         },
         "parameters": [
             {
+                "name": "171MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
                 "step": 250,
                 "preamp": "OFF",
                 "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
@@ -705,7 +726,298 @@
         ],
         "measurements": {}
     },
-    "Invest CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS": {
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
+        "metadata": {
+            "sample": "CRE2-2025-TP002-02",
+            "project": "CRE2-2025-TP002 RESAC",
+            "operator": "NDN/WD, 18/02/2025 07:43:05",
+            "test_config": {
+                "Antenna position": "in front of harness",
+                "DUT Orientation": "axis X",
+                "Housing connected to the ground plane": "no",
+                "Configuration of the power return line LV": "remotely grounded",
+                "-": ""
+            },
+            "operating_mode": {
+                "Mode": 3,
+                "Conclusion": "comply"
+            }
+        },
+        "parameters": [
+            {
+                "name": "1.156GHz-1.617GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
+                "step": 2.25,
+                "preamp": "ON",
+                "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
+                "sweeping": 3,
+                "rbw": 9,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "1.156GHz-1.617GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
+                "step": 2.25,
+                "preamp": "ON",
+                "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
+                "sweeping": 3,
+                "rbw": 9,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            }
+        ],
+        "measurements": {}
+    },
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+        "metadata": {
+            "sample": "CRE2-2025-TP002-02",
+            "project": "CRE2-2025-TP002 RESAC",
+            "operator": "NDN/WD, 19/02/2025 15:27:53",
+            "test_config": {
+                "Antenna position": "in front of DUT",
+                "DUT Orientation": "axis Y",
+                "Housing connected to the ground plane": "no",
+                "Configuration of the power return line LV": "remotely grounded",
+                "-": ""
+            },
+            "operating_mode": {
+                "Mode": 3,
+                "Conclusion": "not comply"
+            }
+        },
+        "parameters": [
+            {
+                "name": "30MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "30MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "200MHz-1GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "200MHz-1GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "1.805GHz-1.995GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "1.805GHz-1.995GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            }
+        ],
+        "measurements": {}
+    },
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+        "metadata": {
+            "sample": "CRE2-2025-TP002-02",
+            "project": "CRE2-2025-TP002 RESAC",
+            "operator": "NDN/WD, 19/02/2025 15:31:48",
+            "test_config": {
+                "Antenna position": "in front of DUT",
+                "DUT Orientation": "axis Y",
+                "Housing connected to the ground plane": "no",
+                "Configuration of the power return line LV": "remotely grounded",
+                "-": ""
+            },
+            "operating_mode": {
+                "Mode": 3,
+                "Conclusion": "not comply"
+            }
+        },
+        "parameters": [
+            {
+                "name": "171MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "171MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "200MHz-2GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "200MHz-2GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "2GHz-6GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 1-7GHz_horn with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "2GHz-6GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 1-7GHz_horn with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            }
+        ],
+        "measurements": {}
+    },
+    {
+        "test_name": "Invest CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
         "metadata": {
             "sample": "CRE2-2025-TP002-02",
             "project": "CRE2-2025-TP002 RESAC",
@@ -724,6 +1036,8 @@
         },
         "parameters": [
             {
+                "name": "1.156GHz-1.617GHz",
+                "filename": "Invest CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
                 "step": 2.25,
                 "preamp": "ON",
                 "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
@@ -755,5 +1069,295 @@
             }
         ],
         "measurements": {}
+    },
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
+        "metadata": {
+            "sample": "CRE2-2025-TP002-02",
+            "project": "CRE2-2025-TP002 RESAC",
+            "operator": "NDN/WD, 18/02/2025 07:54:39",
+            "test_config": {
+                "Antenna position": "in front of harness",
+                "DUT Orientation": "axis X",
+                "Housing connected to the ground plane": "no",
+                "Configuration of the power return line LV": "remotely grounded",
+                "-": ""
+            },
+            "operating_mode": {
+                "Mode": 3,
+                "Conclusion": "not comply"
+            }
+        },
+        "parameters": [
+            {
+                "name": "1.156GHz-1.617GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
+                "step": 2.25,
+                "preamp": "ON",
+                "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
+                "sweeping": 3,
+                "rbw": 9,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "1.156GHz-1.617GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 9kHz_GNSS",
+                "step": 2.25,
+                "preamp": "ON",
+                "setup": "USE_CRE2_RESAC (A) 1.1-1.7GHz_GPS_horn",
+                "sweeping": 3,
+                "rbw": 9,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            }
+        ],
+        "measurements": {}
+    },
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+        "metadata": {
+            "sample": "CRE2-2025-TP002-02",
+            "project": "CRE2-2025-TP002 RESAC",
+            "operator": "NDN/WD, 20/02/2025 11:12:24",
+            "test_config": {
+                "Antenna position": "in front of DUT",
+                "DUT Orientation": "axis Z",
+                "Housing connected to the ground plane": "no",
+                "Configuration of the power return line LV": "remotely grounded",
+                "-": ""
+            },
+            "operating_mode": {
+                "Mode": 3,
+                "Conclusion": "not comply"
+            }
+        },
+        "parameters": [
+            {
+                "name": "30MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "30MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "200MHz-1GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "200MHz-1GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "1.805GHz-1.995GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "1.805GHz-1.995GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA",
+                "step": 30,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 120,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            }
+        ],
+        "measurements": {}
+    },
+    {
+        "test_name": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+        "metadata": {
+            "sample": "CRE2-2025-TP002-02",
+            "project": "CRE2-2025-TP002 RESAC",
+            "operator": "NDN/WD, 20/02/2025 09:26:46",
+            "test_config": {
+                "Antenna position": "in front of DUT",
+                "DUT Orientation": "axis Z",
+                "Housing connected to the ground plane": "no",
+                "Configuration of the power return line LV": "remotely grounded",
+                "-": ""
+            },
+            "operating_mode": {
+                "Mode": 3,
+                "Conclusion": "not comply"
+            }
+        },
+        "parameters": [
+            {
+                "name": "171MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "171MHz-200MHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 20MHz-300MHz_biconical with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "200MHz-2GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "200MHz-2GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 200MHz-2GHz_log-periodic with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "2GHz-6GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 1-7GHz_horn with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            },
+            {
+                "name": "2GHz-6GHz",
+                "filename": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA",
+                "step": 250,
+                "preamp": "OFF",
+                "setup": "USE_CRE2_RESAC (A) 1-7GHz_horn with preamp",
+                "sweeping": 3,
+                "rbw": 1,
+                "dynamic": 120,
+                "span": 0.1,
+                "ref_level": 70,
+                "vbw": "Auto",
+                "rf_att": 0,
+                "sweep_time": 1000,
+                "maxhold": 5
+            }
+        ],
+        "measurements": {}
     }
-}
+]

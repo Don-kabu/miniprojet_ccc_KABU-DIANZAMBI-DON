@@ -15,14 +15,13 @@ import re
 
 
 
-
 INPUTFILE = "input/RAW DATA 02.doc"
 
 
 ROOT = os.getcwd()
 DATA_DIR = os.path.join(ROOT, 'data')
 INPUT_DIR = os.path.join(DATA_DIR, 'input')
-OUTPUT_DIR = os.path.join(ROOT, 'output')
+OUTPUT_DIR = os.path.join(ROOT, 'out')
 TEMPLATE_DIR = os.path.join(DATA_DIR, 'templates')  
 LOG_FILE  =  os.path.join(ROOT,"out/.log")
 
@@ -32,24 +31,27 @@ LOG_FILE  =  os.path.join(ROOT,"out/.log")
 
 
 
-
+# s'arrête au prochain EQ/MR ou fin du texte.
 BLOCK_PATTERN = pattern = re.compile(
         r"(EQ/MR\s+\d+:\s+Measurement of radio frequency radiated emission test.*?)"
-        r"(?=(?:EQ/MR\s+\d+:)|\Z)",  # s'arrête au prochain EQ/MR ou fin du texte
+        r"(?=(?:EQ/MR\s+\d+:)|\Z)",  
         re.DOTALL
     )
 
 
-
+# la liste de titres des mesures possible.
 MESURE_TITLES = [
         "CISPR.AVG/Lim.Avg (2)",
         "Peak/Lim.Q-Peak (2)",
         "Q-Peak/Lim.Q-Peak (2)",
         "Peak/Lim.Peak (2)"
     ]
-    
 
 
+MESURE_TITLE_PATTERN = re.compile(r"\s*[a-zA-Z0-9]+\-*[a-zA-Z0-9]*\.*/[a-zA-Z0-9]+\-*[a-zA-Z0-9]*\.*")
+
+
+# le pattern ou l'expression reguliere qui contient la section de mesure .
 MESURE_DATA_PATTERN = re.compile(
         r"(?P<title>" + "|".join(map(re.escape, MESURE_TITLES)) + r")\s+"
         r"(?P<body>.*?(?:Vertical|Horizontal)\s+\d+\.\d+\s+.*?(?:Vertical|Horizontal)\s+\d+\.\d+)",
@@ -58,6 +60,7 @@ MESURE_DATA_PATTERN = re.compile(
 
 
 
+# le pattern  ou l'expression reguliere de la section  parametres de tests.
 TEST_PARAMETERS_BLOCK_PATTERN = block_pattern = re.compile(
         r"\s*\n\n\n\s*"
         r"name\s*(?P<name>.+?)\s*"
@@ -79,7 +82,7 @@ TEST_PARAMETERS_BLOCK_PATTERN = block_pattern = re.compile(
     )
 
 
-
+# le pattern ou l'exppression reguliere de la section metadonne.
 META_DATA_PATTERN = re.compile(
         r"Sample:\s*(?P<sample>.*?)\s*"
         r"Project:\s*(?P<project>.*?)\s*"
@@ -89,5 +92,5 @@ META_DATA_PATTERN = re.compile(
         re.DOTALL
     )
 
-
+# le nom du candidat donc le nom de l'auteur que je suis.
 candidate = "KABU DIANZAMBI DON"

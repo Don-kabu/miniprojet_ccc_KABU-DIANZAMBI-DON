@@ -5,6 +5,7 @@ import pandas as pd
 from config import candidate
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+import utils
 
 
 
@@ -224,10 +225,10 @@ def create_document(data,out_filename):
         add_measurements_table(doc,test_data["measurements"])
         
 
-    add_footer(doc,candidate,right_text=out_filename)
+    add_footer(doc,candidate,right_text=utils.get_filename_from_path(out_filename))
 
     # Sauvegarder document
-    doc.save(f"out/Processed_{out_filename}.docx")
+    doc.save(out_filename+"/PROCESSED.docx")
  
 
 

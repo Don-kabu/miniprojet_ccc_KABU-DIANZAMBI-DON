@@ -6,26 +6,6 @@ from typing import Dict, Any
 
 
 
-def fix_encoding(data):
-    """
-    Corrige les problèmes d'encodage 'Âµ' → 'µ'
-    dans un dictionnaire 
-    """
-    if isinstance(data, dict):
-        return {fix_encoding(k): fix_encoding(v) for k, v in data.items()}
-    elif isinstance(data, list):
-        return [fix_encoding(item) for item in data]
-    elif isinstance(data, str):
-        corrections = {
-            "Âµ": "µ",
-        }
-        for wrong, right in corrections.items():
-            data = data.replace(wrong, right)
-        return data
-    else:
-        return data
-
-
 
 
 def normalize_value(key: str, value: str):
@@ -33,41 +13,40 @@ def normalize_value(key: str, value: str):
     if not isinstance(value, str):
         return value
 
-    val = fix_encoding(value)
 
     # garder Polarization tel quel
-    if val in ["Vertical", "Horizontal"]:
-        return val
+    if value in ["Vertical", "Horizontal"]:
+        return value
 
     # garder les dates (présence de / et :)
-    if re.search(r"\d{1,2}/\d{1,2}/\d{4}", val) and ":" in val:
-        return val
+    if re.search(r"\d{1,2}/\d{1,2}/\d{4}", value) and ":" in value:
+        return value
 
     # détecter RBW et garder texte standard
     if "rbw" in key.lower():
-        val = val.lower().replace(" ", "")
-        if "9khz" in val:
+        value = value.lower().replace(" ", "")
+        if "9khz" in value:
             return "9 kHz"
-        if "120khz" in val:
+        if "120khz" in value:
             return "120 kHz"
-        if "1mhz" in val:
+        if "1mhz" in value:
             return "1 MHz"
-        return val
+        return value
 
     # remplacer virgule par point pour parsing
-    candidate = val.replace(",", ".")
+    candidate = value.replace(",", ".")
 
     # extraire uniquement la partie numérique
     clean_val = re.sub(r"[^\d\.\-]", "", candidate)
 
     # si pas de chiffre → retourner texte brut
     if not re.search(r"\d", clean_val):
-        return val
+        return value
 
     try:
         num = float(clean_val)
     except ValueError:
-        return val
+        return value
 
     key_lower = key.lower()
 
@@ -82,10 +61,15 @@ def normalize_value(key: str, value: str):
     # valeurs simples → int si possible
     return int(num) if num.is_integer() else num
 
+
+
+
+
+# normalisation des valeurs numerique 
 def normalize_data(data):
-    """Corrige encodage + normalise toutes les valeurs numériques avec unités."""
+    """normalise toutes les valeurs numériques avec unités."""
     if isinstance(data, dict):
-        return {fix_encoding(k): normalize_data(v) for k, v in data.items()}
+        return {k : normalize_data(v) for k, v in data.items()}
     elif isinstance(data, list):
         return [normalize_data(item) for item in data]
     elif isinstance(data, str):

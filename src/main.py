@@ -1,42 +1,57 @@
 from docx import Document
 import docx2txt
-from Parser import makedata
 from writter import create_document
-from utils import extract_important_data,export_to_csv,get_filename_from_path
+import utils
 import json
-from config import INPUTFILE
+from config import INPUTFILE,OUTPUT_DIR
+import os
 # from ..config import settings
 
 
 file_path = INPUTFILE
 
 
-rawtext = docx2txt.process(file_path)
-data = makedata(rawtext)
-importantdata = extract_important_data(data)
-filename = get_filename_from_path(file_path)
-try:
-    with open(f"out/{filename}_IMPORTANT.json","w") as file : 
-        json.dump(importantdata,file,indent=4)
+rawtext = docx2txt.process(file_path).replace("Â","")
 
-    with open(f"out/{filename}_FULL.json","w",encoding="utf-8") as file:
-        json.dump(data,file,indent=4,ensure_ascii=False)
-    #export to word 
-    create_document(importantdata,out_filename=filename)
-    # export to csv
-    export_to_csv(importantdata,filename)
+data = utils.getdata(rawtext)
 
-    print(f"""
-        file exported succesfully
-        =========================
-        csv : out_{filename}.csv
-        docx : processed_{filename}.docx
-        full extracted data : {filename}_FULL.json
-        important used data  : {filename}_IMPORTANT.json
-        """)
+# importantdata = extract_important_data(data)
+importantdata = utils.get_cleaned_data(data)
 
-except :
-    print("""
-    SOME THING WENT WRONG  CHECK YOUR FILE PATH 
-""")
-    data = None
+filename = utils.get_filename_from_path(file_path)
+
+# try:
+
+if not os.path.exists(OUTPUT_DIR+f"/{filename}"):
+    os.mkdir(OUTPUT_DIR+f"/{filename}/")
+
+with open(OUTPUT_DIR+f"/{filename}/genarated.json","w") as file : 
+    json.dump(importantdata,file,indent=4,ensure_ascii=False)
+
+with open(OUTPUT_DIR+f"/{filename}/full.json","w",encoding="utf-8") as file:
+    json.dump(data,file,indent=4,ensure_ascii=False)
+    
+# Traiter les données
+df = utils.getdataframe(importantdata)
+
+# Exporter en CSV
+df.to_csv(OUTPUT_DIR+f"/{filename}"+'/POCESSED.csv', index=False, encoding='utf-8')
+
+# Exporter en Excel
+df.to_excel(OUTPUT_DIR+f"/{filename}"+'/POCESSED.xlsx', index=False, engine='openpyxl')
+
+print(f"""
+    file exported succesfully
+    =========================
+    csv : out_{filename}.csv
+    excel : out_{filename}.excel
+    docx : processed_{filename}.docx
+    full extracted data : {filename}_FULL.json
+    important used data  : {filename}_IMPORTANT.json
+    """)
+
+# except :
+#     print("""
+#         SOME THING WENT WRONG  CHECK YOUR FILE PATH 
+#     """)
+#     data = None

@@ -1,0 +1,16 @@
+methodologie de travail du mini projet d'embauche ccc selon le candidats KABU DIANZAMBI DON 
+
+1. lecture du text brut depuis le RAW DATA.(docx2txt)
+2. analyse du text  pour avoir les expressions reguliere de chaque section de donnees demande ou se trouvant dans le text lis
+3. construction des patterns(exppressions regulieres) des chaque section.
+	- chaque fichier contient une grande section repetitive commencant par (EQ/MR 01: Measurement...)  finissant au prochain(EQ/MR 01: Measurement...)
+	qu'on va nommer par le block.
+	chaque block contient:
+		*les metadonnees commencant par(Sample:...) jusqu'au (Operating mode:...) suivi de deux saut de ligne.
+		*les blocks de parametres des tests commencant par trois saut de linge suivi de (Operating mode:...) et finissant par (Maxhold...).
+		*les mesures avec la forme par exemple CISPR.AVG/Lim.Avg (2) et c'est sur une seule ligne.
+		*les tableaux chiffres commencant par une section de mesure a dessus et finissant par ("Vertical ou Horizontal")
+	- construction de pattern pour chaque parametre du groupe  ou de chaque element utile du groupe (par groupe dans le pattern toujours).
+	
+4. 
+

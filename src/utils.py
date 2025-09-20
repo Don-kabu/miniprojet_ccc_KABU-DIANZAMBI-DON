@@ -1,81 +1,85 @@
 import pandas as pd
+import Parser
 
 
 
 
 
 
-def extract_important_data(data):
-    structured_result = {}
-    
-    for test_name, test_data in data.items():
-        metadata = test_data.get('metadata', {})
-        test_config = metadata.get('test_config', {})
-        operating_mode = test_data.get('metadata', {}).get('operating_mode', {})
+
+def getdata(rawdata):
+    blocks = Parser.find_all_blocks(rawdata)
+    data = []
+    for block in blocks:
+        blockdata = {}
+        blockdata["test_name"]=Parser.extract_name_test(block)
+        blockdata["metadata"] = Parser.extract_metadata(block)
+        blockdata["parameters"] = Parser.extract_test_parameters_block(block)
+        blockdata["measurements"] = Parser.extract_measurement_tables(block)
+
+        data.append(blockdata)
+    data = Parser.normalize_data(data)
+    return data
+
+
+
+
+
+
+
+
+
+
+
+
+
+# the function that returns a cleaned data or important data or best data format for output
+def get_cleaned_data(data):
+    data=Parser.normalize_data(data)
+    result = []
+    for block in data :
+        # data["headers"]= 
+        result.append(getblockdata(block))
+    return result
+
+
+
+
+
+
+
+
+# this function gets block important data for output
+def getblockdata(block):
+    result={}
+    try:
+        result["header"]=  f"{block['test_name']}-{block['metadata']['test_config']['DUT Orientation']}-Mode{block['metadata']['operating_mode']['Mode']}-{block['metadata']['operating_mode']['Conclusion']} \n tests :{''.join([k['name'] for k in block['parameters'] ])}"
+        result["table"]=[]
+
+        for k in block["measurements"].keys():
+            detector =k.split("/")[0]
+
+            for i in block["measurements"][k]["rows"]:
+                d = [a for a in i.values()]+[detector]
+                result["table"].append(d+["PASS" if d[-4]*-1 >=0 else "FAIL"])
         
-        sample_id = metadata.get('sample', '')
-        antenna_position = test_config.get('Antenna position', '')
-        dut_orientation = test_config.get('DUT Orientation', '')
-        mode = operating_mode.get("Mode")
-        
-        # Extraire les paramètres uniques (sans name)
-        parameters_list = test_data.get('parameters', [])
-        parameters_list[0].pop("name")
-        parameters_list[0].pop("filename")
-        unique_params = parameters_list[0]
-        measurements_data = []
-        measurements = test_data.get('measurements', {})
-        
-        for measurement_type, measurement_info in measurements.items():
-            headers = measurement_info.get('headers', [])
-            rows = measurement_info.get('rows', [])
-            measurement_used = measurement_type.split('/')[0]
-            
-            for row in rows:
-                # Créer une entrée standardisée
-                measurement_entry = {
-                    'measurement_type': measurement_used,
-                    'frequency_mhz': row.get('Frequency (MHz)', ''),
-                    'sr': row.get('SR', ''),
-                    'Measure': '',
-                    'Limit': '',
-                    'Margin': '',
-                    'polarization': row.get('Polarization', ''),
-                    'correction_db': row.get('Correction (dB)', ''),
-                    'veridict' : ''
-                }
-                
-                # Remplir les valeurs selon le type de mesure
-                if measurement_used == 'CISPR.AVG':
-                    measurement_entry['Measured'] = row.get('CISPR.AVG (dBµV/m)', '')
-                    measurement_entry['Limit'] = row.get('Lim.Avg (dBµV/m)', '')
-                    measurement_entry['Margin'] = row.get('CISPR.AVG-Lim.Avg (dB)', '')
-                elif measurement_used == 'Peak':
-                    measurement_entry['Measured'] = row.get('Peak (dBµV/m)', '')
-                    measurement_entry['Limit'] = row.get('Lim.Q-Peak (dBµV/m)', '') or row.get('Lim.Peak (dBµV/m)', '')
-                    measurement_entry['Margin'] = row.get('Peak-Lim.Q-Peak (dB)', '') or row.get('Peak-Lim.Peak (dB)', '')
-                elif measurement_used == 'Q-Peak':
-                    measurement_entry['Measure'] = row.get('Q-Peak (dBµV/m)', '')
-                    measurement_entry['Limit'] = row.get('Lim.Q-Peak (dBµV/m)', '')
-                    measurement_entry['Margin'] = row.get('Q-Peak-Lim.Q-Peak (dB)', '')
-                
-                measurement_entry['veridict']  =  "PASS" if measurement_entry['Margin']>= 0 else "FAIL"
-                    
-                measurements_data.append(measurement_entry)
-        
-        # Structurer le résultat final
-        structured_result[test_name] = {
-            'sample_id': sample_id,
-            'antenna_position': antenna_position,
-            'mode' : mode,
-            'dut_orientation': dut_orientation,
-            'parameters': unique_params,
-            'measurements': measurements_data,
-            'has_measurements': bool(measurements)
+        # produire le veridict de la section
+        for i in result["table"]:
+            if i[-1] =="FAIL":
+                result["verdict"]="FAIL"
+                break
+            else:
+                result["verdict"]="PASS"
+    except:
+        pass
 
-        }
-    
-    return structured_result
+    return result
+
+
+
+
+
+
 
 
 
@@ -126,4 +130,62 @@ def export_to_csv(data,filename):
 
 
 
+
+
+
+def getdataframe(json_data):
+    # Définir les noms de colonnes pour le DataFrame final
+    final_columns = [
+        "Section", 
+        "Frequency (MHz)", 
+        "SR", 
+        "Polarization", 
+        "Correction (dB)", 
+        "Mesure(dBµV/m)", 
+        "Limite (dBµV/m)", 
+        "Marge (dB)", 
+        "Detector",
+        "Verdict"
+    ]
+    
+    all_data = []
+    
+    for item in json_data:
+        header = item["header"].split(" ")[0]
+        table = item["table"]
+        
+        if table:
+            for row in table:
+                # Extraire les valeurs du tableau
+                frequency = row[0]
+                sr = row[1]
+                mesure = row[2]
+                limite = row[3]
+                marge = row[4]
+                polarization = row[5]
+                correction = row[6]
+                detector = row[7]  # Non utilisé dans le format final demandé
+                row_verdict = row[8]
+                
+                # Créer une nouvelle ligne avec le format demandé
+                new_row = [
+                    header,          # Section
+                    frequency,       # Frequency (MHz)
+                    sr,              # SR
+                    polarization,    # Polarization
+                    correction,      # Correction (dB)
+                    mesure,          # Mesure(dBµV/m)
+                    limite,          # Limite (dBµV/m)
+                    marge,           # Marge (dB)
+                    detector,
+                    row_verdict      # Verdict
+                ]
+                
+                all_data.append(new_row)
+        else:
+            all_data.append([header])
+    
+    # Créer le DataFrame
+    df = pd.DataFrame(all_data, columns=final_columns)
+    return df
 

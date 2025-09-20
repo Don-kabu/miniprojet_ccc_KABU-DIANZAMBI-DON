@@ -3,24 +3,36 @@
 import re
 import docx2txt
 from typing import List, Dict, Any
-from config import MESURE_DATA_PATTERN,TEST_PARAMETERS_BLOCK_PATTERN,BLOCK_PATTERN,META_DATA_PATTERN
-from rules import fix_encoding,normalize_data
+import config
+from rules import normalize_data
 
+
+
+# le donnees brut qui viennent directement du fichier de RAW DATA.
 text = docx2txt.process("input/RAW DATA 02.doc")
 
+# fixage manuel de l'encodage , suppression du caractere "Â"
+text = text.replace("Â","")
 
+
+
+
+# la fonction qui extrait les tables des mesures du block de text brut .
 def extract_measurement_tables(text: str) -> Dict[str, Any]:
 
     # Regex pour capturer un tableau depuis son titre jusqu'au 2ème 'Vertical|Horizontal + nombre'
     results = {}
-    for match in MESURE_DATA_PATTERN.finditer(text):
-        title = match.group("title").strip().replace("Â","")  # enlever (2) et espaces
+    for match in config.MESURE_DATA_PATTERN.finditer(text):
+        title = match.group("title").strip()  # enlever (2) et espaces
         body = match.group("body").strip().splitlines()
+        
         # Nettoyage des lignes vides
         body = [line.strip() for line in body if line.strip()]
+
         # Le premier bloc = en-têtes
         headers = []
         data = []
+        
         # On considère que les lignes non numériques = en-têtes
         for line in body:
             if not re.match(r"^[\d\.\-]+$", line) and line not in ("Vertical", "Horizontal"):
@@ -56,7 +68,7 @@ def extract_test_parameters_block(block: str) -> Dict[str, str]:
     Extrait les paramètres d'un seul bloc de test et les retourne sous forme de dictionnaire.
     Le bloc doit contenir les champs standards (name, filename, step, ...).
     """
-    match = TEST_PARAMETERS_BLOCK_PATTERN.finditer(block)
+    match = config.TEST_PARAMETERS_BLOCK_PATTERN.finditer(block)
     if not match:
         return []
     else:
@@ -119,7 +131,7 @@ def extract_metadata(text: str) -> Dict[str, str]:
     """
     Extrait les métadonnées du bloc (Sample, Project, Operator, Test Configuration, Operating mode).
     """
-    match = META_DATA_PATTERN.search(text)
+    match = config.META_DATA_PATTERN.search(text)
     if not match:
         return {}
     meta = {k: v.strip() for k, v in match.groupdict().items()}
@@ -139,24 +151,9 @@ def find_all_blocks(text: str) -> List[str]:
     Trouve tous les blocs de test dans le texte.
     Un bloc commence par 'EQ/MR' et se termine avant le prochain 'EQ/MR' ou la fin du texte.
     """
-    return BLOCK_PATTERN.findall(text)
+    return config.BLOCK_PATTERN.findall(text)
 
 
 
 
-def makedata(rawdata):
-    blocks = find_all_blocks(rawdata)
-    data = {}
-    a = 0
-    for i, block in enumerate(blocks, 1):
-        test_name = extract_name_test(block)
-        data[test_name] = {}
-        data[test_name]["metadata"] = extract_metadata(block)
-        data[test_name]["parameters"] = extract_test_parameters_block(block)
-        data[test_name]["measurements"] = extract_measurement_tables(block)
 
-
-
-    data = normalize_data(fix_encoding(data))
-
-    return data
