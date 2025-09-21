@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
 
 import re
 import docx2txt
 from typing import List, Dict, Any
-import config
+import config.config as config
 from rules import normalize_data
+
 
 
 

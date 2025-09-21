@@ -1,11 +1,23 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
 from docx import Document
 from docx.shared import Pt, Inches,RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from datetime import datetime
 import pandas as pd 
-from config import candidate
+from config.config import candidate
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-import utils
+from docx.oxml.shared import qn
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from config import config
 
 
 
@@ -83,19 +95,6 @@ def generate_csv_output(json_data:dict, output_path):
 
 
 
-# Fonction pour ajouter un style de tableau professionnel
-def style_table(table):
-    # Bordures fines
-    tbl = table._element
-    tblBorders = OxmlElement('w:tblBorders')
-    for border_name in ("top", "left", "bottom", "right", "insideH", "insideV"):
-        border = OxmlElement(f"w:{border_name}")
-        border.set(qn('w:val'), 'single')
-        border.set(qn('w:sz'), '8')
-        border.set(qn('w:space'), '0')
-        border.set(qn('w:color'), '2F5496')  # bleu foncé
-        tblBorders.append(border)
-    tbl.tblPr.append(tblBorders)
 
 
 
@@ -103,132 +102,56 @@ def style_table(table):
 
 
 
+def fill_doc_with_data(input_data,doc,hash):
+    headers = input_data[-1]["headers"]
+    title=doc.add_heading("test repport".capitalize(),0)
+    title.style.font.bold=True
+    title.style.font.color.rgb = RGBColor(125,123,123)
+    title.alignment =WD_ALIGN_PARAGRAPH.CENTER
+    
+    table = doc.add_table(rows=0, cols=9)
+    table.style = "Table Grid"  # Style avec bordures visibles
+    table.style.font.color.rgb = RGBColor(0,0,0)
+    header1 = table.add_row()
+    for i in range(len(headers)):
+        header1.cells[i].text = headers[i]
+    try:
+        for data in input_data[:-2]:
+            
+            row = table.add_row()
+            row.cells[0].merge(row.cells[-1]).text=data["header"].split("\n")[0]
 
 
+            row = table.add_row()
+            row.cells[0].merge(row.cells[-1]).text=data["header"].split("\n")[1]
 
-def add_measurements_table(doc, measurements, title="Tableau des mesures"):
-    """
-    Ajoute un tableau de mesures dans le document Word
-    :param doc: objet Document (python-docx)
-    :param measurements: liste de dicts (test_data["measurements"])
-    :param title: titre de la section
-    """
-
-    if not measurements:
-        doc.add_heading(title, level=2)
-        doc.add_paragraph()
-        doc.add_paragraph("PAS DE MESURE POUR CETTE SECTION")
-        doc.add_paragraph()
-        return
-
-    # Ajouter un titre
-    doc.add_heading(title, level=2)
-
-    # Définir les colonnes à afficher
-    colonnes = [
-        "measurement_type", "frequency_mhz", "Limit", "Margin",
-        "polarization", "correction_db", "Measured", "veridict"
-    ]
-
-    # Créer le tableau
-    table = doc.add_table(rows=1, cols=len(colonnes))
-    table.style = "Light List Accent 3"
-
-    # En-têtes
-    hdr_cells = table.rows[0].cells
-    for i, col in enumerate(colonnes):
-        hdr_cells[i].text = col.replace("_", " ").capitalize()
-
-    # Remplir le tableau
-    for measure in measurements:
-        row_cells = table.add_row().cells
-        for i, col in enumerate(colonnes):
-            text_value = str(measure.get(col, ""))
-
-            # Ajouter du texte coloré dans la cellule
-            p = row_cells[i].paragraphs[0]
-            run = p.add_run(text_value)
-
-            if text_value.lower() == "fail":
-                run.font.color.rgb = RGBColor(255, 0, 0)  # Rouge
-            elif text_value.lower() == "pass":
-                run.font.color.rgb = RGBColor(0, 128, 0)  # Vert
+            if data["table"]:
+                for measurement in data["table"]:
+                    n_row=table.add_row()
+                    for i in range(len(measurement)):
+                        n_row.cells[i].text = str(measurement[i])
+                        if measurement[i]=="FAIL":
+                            n_row.cells[i].paragraphs[0].runs[0].font.bold =True
+                            n_row.cells[i].paragraphs[0].runs[0].font.color.rgb =RGBColor(148, 16, 16)
+                        elif measurement[i]=="PASS":
+                            n_row.cells[i].paragraphs[0].runs[0].font.bold =True
+                            n_row.cells[i].paragraphs[0].runs[0].font.color.rgb =RGBColor(0,128,0)
             else:
-                run.font.color.rgb = RGBColor(0, 0, 0)  # Noir par défaut
+                row=table.add_row()
+                row.cells[0].merge(row.cells[-1]).text="NO MEASUREMENT FOUND"
+        try:
+            row = table.add_row()
+            row.cells[0].merge(row.cells[-2]).text="verdict"
+            row.cells[-1].text=data["verdict"]
+            if data["verdict"]=="FAIL":
+                row.cells[i].paragraphs[0].runs[0].font.bold =True
+                row.cells[i].paragraphs[0].runs[0].font.color.rgb =RGBColor(148, 16, 16)
+            elif data["verdict"]=="PASS":
+                row.cells[i].paragraphs[0].runs[0].font.bold =True
+                row.cells[i].paragraphs[0].runs[0].font.color.rgb =RGBColor(0,128,0)
+        except:
+            pass
+    except:
+        pass
 
-    # Appliquer un style de bordures
-    tbl = table._element
-    tblBorders = OxmlElement("w:tblBorders")
-    for border_name in ("top", "left", "bottom", "right", "insideH", "insideV"):
-        border = OxmlElement(f"w:{border_name}")
-        border.set(qn("w:val"), "single")
-        border.set(qn("w:sz"), "6")
-        border.set(qn("w:space"), "0")
-        border.set(qn("w:color"), "C00000")  # Rouge sombre
-        tblBorders.append(border)
-    tbl.tblPr.append(tblBorders)
-
-    doc.add_paragraph()
-
-
-
-
-
-
-
-
-
-
-
-def create_document(data,out_filename):
-    # Créer document Word
-    doc = Document()
-
-    # Titre principal
-    title = doc.add_heading("Rapport  de Test", level=0)
-    title.alignment = 1  # centré
-
-    # Boucler sur chaque test
-    for test_name, test_data in data.items():
-        doc.add_heading(f"🔹 {test_name}", level=1)
-
-        # Infos générales
-        doc.add_heading("Informations générales", level=2)
-        info_table = doc.add_table(rows=1, cols=2)
-        info_table.style = "Light List Accent 1"
-        hdr_cells = info_table.rows[0].cells
-        hdr_cells[0].text, hdr_cells[1].text = "Clé", "Valeur"
-
-        for key in ["sample_id", "antenna_position", "mode", "dut_orientation"]:
-            row_cells = info_table.add_row().cells
-            row_cells[0].text = key.replace("_", " ").capitalize()
-            row_cells[1].text = str(test_data.get(key, ""))
-
-        style_table(info_table)
-        doc.add_paragraph()
-
-        # Paramètres de test
-        doc.add_heading("Paramètres de test", level=2)
-        params = test_data.get("parameters", {})
-        param_table = doc.add_table(rows=1, cols=2)
-        param_table.style = "Light List Accent 2"
-        hdr_cells = param_table.rows[0].cells
-        hdr_cells[0].text, hdr_cells[1].text = "Paramètre", "Valeur"
-
-        for k, v in params.items():
-            row_cells = param_table.add_row().cells
-            row_cells[0].text = k
-            row_cells[1].text = str(v)
-
-        style_table(param_table)
-        doc.add_paragraph()
-        add_measurements_table(doc,test_data["measurements"])
-        
-
-    add_footer(doc,candidate,right_text=utils.get_filename_from_path(out_filename))
-
-    # Sauvegarder document
-    doc.save(out_filename+"/PROCESSED.docx")
- 
-
-
+    add_footer(doc,config.candidate,right_text=hash)

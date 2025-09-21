@@ -1,11 +1,15 @@
+import sys
+import os
+from writter import fill_doc_with_data
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
+from config.config import INPUTFILE,OUTPUT_DIR
 from docx import Document
 import docx2txt
-from writter import create_document
 import utils
 import json
-from config import INPUTFILE,OUTPUT_DIR
-import os
-# from ..config import settings
 
 
 file_path = INPUTFILE
@@ -39,6 +43,13 @@ df.to_csv(OUTPUT_DIR+f"/{filename}"+'/POCESSED.csv', index=False, encoding='utf-
 
 # Exporter en Excel
 df.to_excel(OUTPUT_DIR+f"/{filename}"+'/POCESSED.xlsx', index=False, engine='openpyxl')
+
+
+# export en word 
+
+doc = Document()
+fill_doc_with_data(importantdata,doc,filename)
+doc.save(OUTPUT_DIR+f"/{filename}"+"/POCESSED.docx")
 
 print(f"""
     file exported succesfully

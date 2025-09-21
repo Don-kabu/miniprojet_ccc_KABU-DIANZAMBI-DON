@@ -1,5 +1,17 @@
 import pandas as pd
 import Parser
+from docx import Document
+from docx.shared import Pt, Inches,RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+import json
+from datetime import datetime
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from config import config
 
 
 
@@ -38,8 +50,20 @@ def get_cleaned_data(data):
     data=Parser.normalize_data(data)
     result = []
     for block in data :
-        # data["headers"]= 
         result.append(getblockdata(block))
+    result.append({
+        "headers":[
+            "Section",
+            "Frequency(MHz)",
+            "SR",
+            "Polarization",
+            "Correction(dB)",
+            "Mesure(dBµV/m)",
+            "Limite(dBµV/m)",
+            "Marge(dB)",
+            "Verdict"
+        ]
+    })
     return result
 
 
@@ -150,10 +174,13 @@ def getdataframe(json_data):
     
     all_data = []
     
-    for item in json_data:
-        header = item["header"].split(" ")[0]
-        table = item["table"]
-        
+    for item in json_data[:-2]:
+        try:
+            header = item["header"].split(" ")[0]
+            table = item["table"]
+        except:
+            continue
+
         if table:
             for row in table:
                 # Extraire les valeurs du tableau
@@ -183,9 +210,10 @@ def getdataframe(json_data):
                 
                 all_data.append(new_row)
         else:
-            all_data.append([header])
+            all_data.append(["" for i in range(10)])
     
     # Créer le DataFrame
     df = pd.DataFrame(all_data, columns=final_columns)
     return df
+
 

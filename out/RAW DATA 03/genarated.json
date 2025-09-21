@@ -1,0 +1,72 @@
+[
+    {},
+    {
+        "header": "CRE2-2025-TP002-03_ER_In front of harness RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-03_ER_In front of DUT RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-03_ER_In front of harness RBW 120kHz WIth PA-axis X-Mode3-comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-03_ER_In front of harness RBW 1MHz WIth PA-axis X-Mode3-not comply \n tests :171MHz-200MHz171MHz-200MHz200MHz-2GHz200MHz-2GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-03_ER_In front of DUT RBW 120kHz WIth PA-axis X-Mode3-not comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-03_ER_In front of DUT RBW 1MHz With PA-axis X-Mode3-not comply \n tests :171MHz-200MHz171MHz-200MHz200MHz-2GHz200MHz-2GHz2GHz-6GHz2GHz-6GHz",
+        "table": []
+    },
+    {
+        "header": "NOK CRE2-2025-TP002-03_ER_In front of harness RBW 120kHz WIth PA-axis X-Mode3-not comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-03_ER_In front of DUT RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA-axis Y-Mode3-not comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA-axis Y-Mode3-not comply \n tests :171MHz-200MHz171MHz-200MHz200MHz-2GHz200MHz-2GHz2GHz-6GHz2GHz-6GHz",
+        "table": []
+    },
+    {
+        "header": "Invest CRE2-2025-TP002-03_ER_In front of DUT RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-03_ER_In front of DUT RBW 9kHz_GNSS-axis X-Mode3-comply \n tests :1.156GHz-1.617GHz1.156GHz-1.617GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 120kHz With PA-axis Z-Mode3-not comply \n tests :30MHz-200MHz30MHz-200MHz200MHz-1GHz200MHz-1GHz1.805GHz-1.995GHz1.805GHz-1.995GHz",
+        "table": []
+    },
+    {
+        "header": "CRE2-2025-TP002-02_ER_In front of DUT RBW 1MHz With PA-axis Z-Mode3-not comply \n tests :171MHz-200MHz171MHz-200MHz200MHz-2GHz200MHz-2GHz2GHz-6GHz2GHz-6GHz",
+        "table": []
+    },
+    {
+        "headers": [
+            "Section",
+            "Frequency(MHz)",
+            "SR",
+            "Polarization",
+            "Correction(dB)",
+            "Mesure(dBµV/m)",
+            "Limite(dBµV/m)",
+            "Marge(dB)",
+            "Verdict"
+        ]
+    }
+]
